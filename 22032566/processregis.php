@@ -1,5 +1,5 @@
     <?php
-        include("connect.php");
+    include("connect.php");
     $uname= $_GET['username'];
     $pass= $_GET['password'];
     $fullname= $_GET['fullname'];
@@ -22,11 +22,10 @@
         //$sql = 'INSERT INTO `user` (`user_id`, `username`, `password`, `fullname`) VALUES (NULL, \'panu123\', \'1234\', \'panwat jantong\');';
         //mysqli_query($conn, $sql)
 
-        //คำสั่งเชิง OOP
+        //MySQLi with Prepared Statements
         $sql = $conn->prepare("INSERT INTO user (username,password,fullname) VALUES (?, ?, ?)");
         $sql->bind_param("sss", $uname, $pass, $fullname);
-        $sql->execute();
-       
+        $sql->execute();      
     ?>
     <?php
         $getalluser="SELECT * FROM user";
